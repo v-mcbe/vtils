@@ -113,11 +113,11 @@ fn (_ LittleEndian)str() string {
 
 interface ValueReader {
 	mut:
-		read_value([]byte, ByteOrder)
+		read_value([]byte, ByteOrder) int
 }
 
-pub fn read_value(b []byte, order ByteOrder, mut v ValueReader) {
-	v.read_value(b, order)
+pub fn read_value(b []byte, order ByteOrder, mut v ValueReader) int {
+	return v.read_value(b, order)
 }
 
 pub fn read_bool(b []byte, order ByteOrder, mut v &bool) int {
