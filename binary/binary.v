@@ -55,7 +55,6 @@ fn (_ BigEndian) put_uint64(mut b []byte, v u64) {
 	b[5] = u8(v >> 16)
 	b[6] = u8(v >> 8)
 	b[7] = u8(v)
-
 }
 
 fn (_ BigEndian)str() string {
@@ -121,68 +120,79 @@ pub fn read_value(b []byte, order ByteOrder, mut v ValueReader) {
 	v.read_value(b, order)
 }
 
-pub fn read_bool(b []byte, order ByteOrder, mut v &bool) {
+pub fn read_bool(b []byte, order ByteOrder, mut v &bool) int {
 	unsafe {
 		*v = b[0] != 0
 	}
+	return 1
 }
 
-pub fn read_i8(b []byte, order ByteOrder, mut v &i8) {
+pub fn read_i8(b []byte, order ByteOrder, mut v &i8) int {
 	unsafe {
 		*v = i8(b[0])
 	}
+	return 1
 }
 
-pub fn read_u8(b []byte, order ByteOrder, mut v &u8) {
+pub fn read_u8(b []byte, order ByteOrder, mut v &u8) int {
 	unsafe {
 		*v = b[0]
 	}
+	return 1
 }
 
-pub fn read_i16(b []byte, order ByteOrder, mut v &i16) {
+pub fn read_i16(b []byte, order ByteOrder, mut v &i16) int {
 	unsafe {
 		*v = i16(order.uint16(b))
 	}
+	return 2
 }
 
-pub fn read_u16(b []byte, order ByteOrder, mut v &u16) {
+pub fn read_u16(b []byte, order ByteOrder, mut v &u16) int {
 	unsafe {
 		*v = order.uint16(b)
 	}
+	return 2
 }
 
-pub fn read_int(b []byte, order ByteOrder, mut v &int) {
+pub fn read_int(b []byte, order ByteOrder, mut v &int) int {
 	unsafe {
 		*v = int(order.uint32(b))
 	}
+	return 4
 }
 
-pub fn read_u32(b []byte, order ByteOrder, mut v &u32) {
+pub fn read_u32(b []byte, order ByteOrder, mut v &u32) int {
 	unsafe {
 		*v = order.uint32(b)
 	}
+	return 4
 }
 
-pub fn read_i64(b []byte, order ByteOrder, mut v &i64) {
+pub fn read_i64(b []byte, order ByteOrder, mut v &i64) int {
 	unsafe {
 		*v = i64(order.uint64(b))
 	}
+	return 8
 }
 
-pub fn read_u64(b []byte, order ByteOrder, mut v &u64) {
+pub fn read_u64(b []byte, order ByteOrder, mut v &u64) int {
 	unsafe {
 		*v = order.uint64(b)
 	}
+	return 8
 }
 
-pub fn read_f32(b []byte, order ByteOrder, mut v &f32){
+pub fn read_f32(b []byte, order ByteOrder, mut v &f32) int {
 	unsafe {
 		*v = math.f32_from_bits(order.uint32(b))
 	}
+	return 8
 }
 
-pub fn read_f64(b []byte, order ByteOrder, mut v &f64){
+pub fn read_f64(b []byte, order ByteOrder, mut v &f64) int {
 	unsafe {
 		*v = math.f64_from_bits(order.uint64(b))
 	}
+	return 8
 }
