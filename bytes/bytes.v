@@ -6,6 +6,10 @@ pub struct Buffer {
 		read_index int
 }
 
+pub fn new_buffer(b []byte) Buffer {
+	return Buffer{buf:b}
+}
+
 pub fn (mut buffer Buffer) read_byte() byte {
 	buffer.read_index += 1
 	return buffer.buf[buffer.read_index-1]
