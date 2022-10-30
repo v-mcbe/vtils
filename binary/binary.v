@@ -196,3 +196,75 @@ pub fn read_f64(b []byte, order ByteOrder, mut v &f64) int {
 	}
 	return 8
 }
+
+pub fn read_value_drop(mut b []byte, order ByteOrder, mut v ValueReader) int {
+	n := read_value(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_bool_drop(mut b []byte, order ByteOrder, mut v &bool) int {
+	n := read_bool(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_i8_drop(mut b []byte, order ByteOrder, mut v &i8) int {
+	n := read_i8(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_u8_drop(mut b []byte, order ByteOrder, mut v &u8) int {
+	n := read_u8(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_i16_drop(mut b []byte, order ByteOrder, mut v &i16) int {
+	n := read_i16(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_u16_drop(mut b []byte, order ByteOrder, mut v &u16) int {
+	n := read_u16(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_int_drop(mut b []byte, order ByteOrder, mut v &int) int {
+	n := read_int(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_u32_drop(mut b []byte, order ByteOrder, mut v &u32) int {
+	n := read_u32(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_i64_drop(mut b []byte, order ByteOrder, mut v &i64) int {
+	n := read_i64(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_u64_drop(mut b []byte, order ByteOrder, mut v &u64) int {
+	n := read_u64(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_f32_drop(mut b []byte, order ByteOrder, mut v &f32) int {
+	n := read_f32(b, order, mut v)
+	b.drop(n)
+	return n
+}
+
+pub fn read_f64_drop(mut b []byte, order ByteOrder, mut v &f64) int {
+	n := read_f64(b, order, mut v)
+	b.drop(n)
+	return n
+}
